@@ -26,12 +26,12 @@ export declare function Html(props: React.DetailedHTMLProps<React.HtmlHTMLAttrib
 export declare class Head extends Component<OriginProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>> {
     static contextType: React.Context<HtmlProps>;
     context: React.ContextType<typeof HtmlContext>;
-    getCssLinks(files: DocumentFiles): JSX.Element[] | null;
+    getCssLinks(): JSX.Element[] | null;
     getPreloadDynamicChunks(): (JSX.Element | null)[];
-    getPreloadMainLinks(files: DocumentFiles): JSX.Element[] | null;
-    getDynamicChunks(files: DocumentFiles): (JSX.Element | null)[];
+    getPreloadMainLinks(): JSX.Element[] | null;
+    getDynamicChunks(): (JSX.Element | null)[];
     getPreNextScripts(): JSX.Element[];
-    getScripts(files: DocumentFiles): JSX.Element[];
+    getScripts(): JSX.Element[];
     getPolyfillScripts(): JSX.Element[];
     handleDocumentScriptLoaderItems(children: React.ReactNode): ReactNode[];
     makeStylesheetInert(node: ReactNode): ReactNode[];
@@ -42,9 +42,9 @@ export declare class NextScript extends Component<OriginProps> {
     static contextType: React.Context<HtmlProps>;
     context: React.ContextType<typeof HtmlContext>;
     static safariNomoduleFix: string;
-    getDynamicChunks(files: DocumentFiles): (JSX.Element | null)[];
+    getDynamicChunks(): (JSX.Element | null)[];
     getPreNextScripts(): JSX.Element[];
-    getScripts(files: DocumentFiles): JSX.Element[];
+    getScripts(): JSX.Element[];
     getPolyfillScripts(): JSX.Element[];
     static getInlineScriptSource(context: Readonly<HtmlProps>): string;
     render(): JSX.Element | null;

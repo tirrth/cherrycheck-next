@@ -175,7 +175,8 @@ function Html(props) {
     })));
 }
 class Head extends _react.Component {
-    getCssLinks(files) {
+    getCssLinks() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         const { assetPrefix , devOnlyCacheBusterQueryString , dynamicImports  } = this.context;
         const cssFiles = files.allFiles.filter((f)=>f.endsWith('.css')
         );
@@ -238,7 +239,8 @@ class Head extends _react.Component {
         })// Filter out nulled scripts
         .filter(Boolean);
     }
-    getPreloadMainLinks(files) {
+    getPreloadMainLinks() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         const { assetPrefix , devOnlyCacheBusterQueryString , scriptLoader  } = this.context;
         const preloadFiles = files.allFiles.filter((file)=>{
             return file.endsWith('.js');
@@ -264,13 +266,15 @@ class Head extends _react.Component {
             ), 
         ];
     }
-    getDynamicChunks(files) {
+    getDynamicChunks() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         return getDynamicChunks(this.context, this.props, files);
     }
     getPreNextScripts() {
         return getPreNextScripts(this.context, this.props);
     }
-    getScripts(files) {
+    getScripts() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         return getScripts(this.context, this.props, files);
     }
     getPolyfillScripts() {
@@ -472,7 +476,7 @@ class Head extends _react.Component {
             "data-n-css": (_nonce = this.props.nonce) !== null && _nonce !== void 0 ? _nonce : ''
         }), process.env.__NEXT_OPTIMIZE_IMAGES && /*#__PURE__*/ _react.default.createElement("meta", {
             name: "next-image-preload"
-        }), !disableRuntimeJS && !disableJsPreload && this.getPreloadDynamicChunks(), !disableRuntimeJS && !disableJsPreload && this.getPreloadMainLinks(files), !disableOptimizedLoading && !disableRuntimeJS && this.getPolyfillScripts(), !disableOptimizedLoading && !disableRuntimeJS && this.getPreNextScripts(), !disableOptimizedLoading && !disableRuntimeJS && this.getDynamicChunks(files), !disableOptimizedLoading && !disableRuntimeJS && this.getScripts(files), process.env.__NEXT_OPTIMIZE_CSS && this.getCssLinks(files), process.env.__NEXT_OPTIMIZE_CSS && /*#__PURE__*/ _react.default.createElement("noscript", {
+        }), !disableRuntimeJS && !disableJsPreload && this.getPreloadDynamicChunks(), !disableRuntimeJS && !disableJsPreload && this.getPreloadMainLinks(files), !disableOptimizedLoading && !disableRuntimeJS && this.getPolyfillScripts(), !disableOptimizedLoading && !disableRuntimeJS && this.getPreNextScripts(), !disableOptimizedLoading && !disableRuntimeJS && this.getDynamicChunks(files), /* !disableOptimizedLoading && !disableRuntimeJS && this.getScripts(files), */ process.env.__NEXT_OPTIMIZE_CSS && this.getCssLinks(files), process.env.__NEXT_OPTIMIZE_CSS && /*#__PURE__*/ _react.default.createElement("noscript", {
             "data-n-css": (_nonce1 = this.props.nonce) !== null && _nonce1 !== void 0 ? _nonce1 : ''
         }), this.context.isDevelopment && // this element is used to mount development styles so the
         // ordering matches production
@@ -494,13 +498,15 @@ function Main() {
     }, _constants.BODY_RENDER_TARGET));
 }
 class NextScript extends _react.Component {
-    getDynamicChunks(files) {
+    getDynamicChunks() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         return getDynamicChunks(this.context, this.props, files);
     }
     getPreNextScripts() {
         return getPreNextScripts(this.context, this.props);
     }
-    getScripts(files) {
+    getScripts() {
+        const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page, this.context.inAmpMode);
         return getScripts(this.context, this.props, files);
     }
     getPolyfillScripts() {
